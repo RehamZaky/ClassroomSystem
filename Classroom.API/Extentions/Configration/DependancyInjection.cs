@@ -3,6 +3,7 @@ using Classroom.API.Infrastructure.Presistance.Ropository;
 using MovieSystem.Infrastructure.Presistance.Repository;
 using Classroom.API.Application.Service.Classroom;
 using Classroom.API.Application.Automapper;
+using Classroom.API.Application.Service.Users;
 namespace Classroom.API.Extentions.Configration
 {
     public static class DependancyInjection 
@@ -14,7 +15,10 @@ namespace Classroom.API.Extentions.Configration
 
             services.AddTransient<IClassroomRepository, ClassroomRepository>();
             services.AddTransient<IClassroomService, ClassroomService>();
-            
+
+            services.AddTransient<IParentRepository, ParentRepository>();
+            services.AddTransient<IParentService, ParentService>();
+
             var assembly = typeof(Program).Assembly;
             services.AddAutoMapper(assembly);
 

@@ -1,9 +1,10 @@
-﻿using Classroom.API.Domain.Entities;
+﻿using Classroom.API.Application.DTO;
+using Classroom.API.Domain.Entities;
 using FluentValidation;
 
 namespace Classroom.API.Application.Validation
 {
-    public class UserValidator : AbstractValidator<User>
+    public class UserValidator : AbstractValidator<UserDTO>
     {
         public UserValidator()
         {
