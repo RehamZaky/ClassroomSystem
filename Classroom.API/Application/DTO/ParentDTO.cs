@@ -5,4 +5,11 @@
         public int Age { get; set; }
 
     }
+
+    public class ParentUpdateDTO : UserDTO
+    {
+        public int Id { get; set; }
+        public int Age { get; set; }
+
+    }
 }

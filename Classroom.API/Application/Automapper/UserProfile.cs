@@ -13,6 +13,8 @@ namespace Classroom.API.Application.Automapper
         {
             CreateMap<Parent,ParentDTO>().ReverseMap();
             CreateMap<User,ParentDTO>().ReverseMap();
+            CreateMap<Parent,ParentUpdateDTO>().ReverseMap();
+            CreateMap<User,ParentUpdateDTO>().ReverseMap();
             CreateMap<Student, StudentDTO>().ReverseMap();
             CreateMap<User, StudentDTO>().ReverseMap();
 
