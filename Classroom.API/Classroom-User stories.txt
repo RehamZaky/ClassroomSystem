@@ -1,0 +1,158 @@
+Components : [ End-user - Admin ]
+
+Epics : [ User -  Category -  Classroom - Quiz - Course - Certifications - Reports - Payment ]
+User [ Admin - Parent - Student - Teacher ]
+Hints: 
+
+Authentecation module : identity
+Authorization module :  policy -  permissions package
+Emails: Using Queue & Jobs
+Delete: Soft delete
+
+User stories: 
+
+Admin
+
+-as an admin should register to the system. 
+-as an admin should send welcome mail after the registration.
+-as an admin should login to the system. 
+-as an admin should logout to the system. 
+
+
+-as a student user, should register to the system.
+-as a student user, should login to the system.
+-as a student user, should logout from the system.
+
+as a parent user, should register to the system.
+-as a parent user, should login to the system.
+-as a parent user, should logout from the system.
+
+-as a teacher can login to the system.
+-as a teacher can logout to the system. 
+
+Razor: 
+-Roles - Permissions - Assinging - Users
+-Show - Categories - Classrooms - Parents - Payments - Courses - Videos - Students - Teachers 
+------------------------------------------------------------------
+
+---Reham
+- Get all Teacher
+-as an admin should create teacher. 
+-as an admin should edit teacher. 
+-as an admin should deactivate teacher. soft delete
+
+- Get all parent
+-as an admin should create parent. 
+-as an admin should edit parent. 
+-as an admin should deactivate parent. soft delete
+
+- Get all Student
+-as an admin should create Student. 
+-as an admin should edit Student. 
+-as an admin should deactivate Student. soft delete
+
+- Get all Admin
+-as an admin should create Admin. 
+-as an admin should edit Admin. 
+-as an admin should deactivate Admin. soft delete
+----
+
+
+---Abobaker
+- Get all classroom
+-as an admin could create a classroom
+-as an admin could edit a classroom
+-as an admin could deactivate the classroom, soft delete
+
+- Get all course
+-as a teacher or admin can create course.
+-as a teacher or admin can edit course.
+-as a teacher or admin can soft delete course.
+
+- Get all quiz
+-as a teacher or admin can create quiz.
+-as a teacher or admin can create questions for the quiz.
+-as a teacher or admin can create answers for the quiz.
+-as a teacher or admin, can create an answer's explinations. 
+-as a teacher or admin can edit quiz.
+-as a teacher or admin can soft delete the quiz.
+
+
+- As a Admin ,or Teacher should show all classroom.
+
+- As a Admin ,or Teacher should show all Quiz.
+
+
+
+
+- As a Admin , should show all Courses.
+
+
+
+------------------------------------------------------------------
+
+--- Ahmed Abdewahab
+-as a teacher or admin can create Videos.
+-as a teacher or admin can edit Videos.
+-as a teacher or admin can soft delete Videos.
+- As a Admin , should show all Videos.
+
+----------------------------------------------------------------
+
+
+-Classroom - Ahmed Saeed 
+-as an admin, should add teacher to a classroom. 
+-as an admin, should remove teacher from a classroom. 
+-as an admin could add students in the classroom 
+-as an admin or parent could approve students in the classroom 
+-as an admin or parent could remove students in the classroom 
+-as a student, should check his classroom details.
+-as a teacher,can check his classrooms reports.
+
+
+xxx
+-as an admin should invite student to the system for registration.   ///////// admin - parent
+
+-Payment
+-as an admin, should check all the payments. 
+
+xxxx
+-as an admin can create an invoice for parent and send email notification. 
+
+Student - Ahmed Abdelwahab
+-as an admin could deactivate student's accounts.  soft delete
+
+Quiz - Reham
+-as a student, could apply to a quize in the classroom.
+
+Course - Reham
+-as a student, could apply to a course in the classroom.
+
+
+
+User [parent_id] - parent - child
+
+
+-> User to Student  one 2 one
+
+
+
+Parent - Ahmed Abdelwahab
+-as a parent should add his childern.
+-as a parent should remove his children. delete student
+-as a parent should check all his childern profiles. get all childern with details 
+
+xxxx
+-as a parent should pay his invoice.
+
+
+ 
+
+ ------------------------------------------------------
+
+ --- Identity - eception handling
+ --- Razor - unit testing
+ --- payment Gateway
+
+
+
