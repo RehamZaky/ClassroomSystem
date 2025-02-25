@@ -33,6 +33,31 @@ namespace Classroom.API.Controllers
             return BadRequest(new ApiResponse<StudentDTO>("", 400, errors));
 
         }
-        
+
+        [HttpPost("UpdateStudent")]
+        public async Task<IActionResult> UpdateStudent(StudentUpdateDTO StudentDTO)
+        {
+            try
+            {
+                var validateResult = new UserValidator().Validate(StudentDTO);
+                if (validateResult.IsValid)
+                {
+                    var StudentResponse = await _studentService.UpdateStudent(StudentDTO);
+                    return Ok(new ApiResponse<StudentUpdateDTO>(StudentResponse, 200, "Student user updated successfully"));
+                }
+                var errors = new List<string>();
+                foreach (var error in validateResult.Errors)
+                {
+                    errors.Add(error.ErrorMessage);
+                }
+                return BadRequest(new ApiResponse<StudentDTO>("", 400, errors));
+            }
+            catch (KeyNotFoundException e)
+            {
+                return NotFound(new ApiResponse<StudentUpdateDTO>("User not found", 404));
+            }
+
+        }
+
     }
 }

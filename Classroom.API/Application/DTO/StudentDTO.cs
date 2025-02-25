@@ -8,4 +8,10 @@ namespace Classroom.API.Application.DTO
         public int Age { get; set; }
         public int ParentId { get; set; }
     }
+
+    public class StudentUpdateDTO : UserDTO
+    {
+        public int Id { get; set; }
+        public int Age { get; set; }
+    }
 }
