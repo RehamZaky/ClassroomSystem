@@ -16,6 +16,8 @@ namespace Classroom.API.Extentions.Configration
             services.AddTransient<IClassroomRepository, ClassroomRepository>();
             services.AddTransient<IClassroomService, ClassroomService>();
 
+            services.AddTransient<IStudentRepository, StudentRepository>();
+            services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IParentRepository, ParentRepository>();
             services.AddTransient<IParentService, ParentService>();
 

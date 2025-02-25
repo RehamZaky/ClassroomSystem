@@ -11,6 +11,7 @@ namespace Classroom.API.Domain.Entities
         [ForeignKey("userId")]
         public User User { get; set; }
         public int ParentId { get; set; }
+        [ForeignKey("ParentId")]
         public Parent? Parent { get; set; }
     }
 }

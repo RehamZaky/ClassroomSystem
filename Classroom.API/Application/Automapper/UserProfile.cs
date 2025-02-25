@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Classroom.API.Application.DTO;
+using Classroom.API.Application.Repository.Interface;
+using Classroom.API.Application.Service.Users;
 using Classroom.API.Domain.Entities;
+using Classroom.API.Infrastructure.Presistance.Ropository;
 
 namespace Classroom.API.Application.Automapper
 {
@@ -10,6 +13,9 @@ namespace Classroom.API.Application.Automapper
         {
             CreateMap<Parent,ParentDTO>().ReverseMap();
             CreateMap<User,ParentDTO>().ReverseMap();
+            CreateMap<Student, StudentDTO>().ReverseMap();
+            CreateMap<User, StudentDTO>().ReverseMap();
+
         }
     }
 }
