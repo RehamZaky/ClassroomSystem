@@ -66,5 +66,18 @@ namespace Classroom.API.Controllers
 
         }
 
+        [HttpPut("DeActivateStudent")]
+        public IActionResult DeActivateStudent(int studentId)
+        {
+            try
+            {
+                var studentDTO = _studentService.DeActivateStudent(studentId);
+                return Ok(new ApiResponse<StudentDTO>(studentDTO, 200, "Student updated successfully"));
+            }
+            catch (KeyNotFoundException e)
+            {
+                return BadRequest(new ApiResponse<StudentDTO>("Student not found", 404));
+            }
+        }
     }
 }

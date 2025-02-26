@@ -73,5 +73,16 @@ namespace Classroom.API.Application.Service.Users
            return _mapper.Map<List<StudentDTO>>(students);
         }
 
+        public StudentDTO DeActivateStudent(int id)
+        {
+           var student = _studentRepository.DeActivateStudent(id);
+            if (student == null)
+                throw new KeyNotFoundException("Student not found");
+
+            var studentDTO = _mapper.Map<StudentDTO>(student);
+            return studentDTO;
+
+        }
+
     }
 }

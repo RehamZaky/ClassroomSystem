@@ -19,5 +19,18 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
         {
             return _dbContext.Students.Where(u => u.IsActive).Include(s=> s.User).ToList();
         }
+
+        public Student? DeActivateStudent(int id)
+        {
+           var student = _dbContext.Students.Where(s => s.Id == id).Include(s=>s.User).FirstOrDefault();
+            if(student == null)
+            {
+                return null;
+            }
+            student.IsActive = false;
+            _dbContext.Students.Update(student);
+            _dbContext.SaveChanges();
+            return student;
+        }
     }
 }
