@@ -10,10 +10,12 @@ namespace Classroom.API.Application.Service.Users
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public StudentService(IUnitOfWork unitOfWork,IMapper mapper)
+        private readonly IStudentRepository _studentRepository;
+        public StudentService(IUnitOfWork unitOfWork,IMapper mapper,IStudentRepository studentRepository)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _studentRepository = studentRepository;
 
         }
         public async Task<StudentDTO> CreateStudent(StudentDTO studentDTO)
@@ -21,6 +23,7 @@ namespace Classroom.API.Application.Service.Users
             try
             {
                 var user = _mapper.Map<User>(studentDTO);
+                user.parent = null;
                 user.CreatedAt = DateTime.Now;
                 var newUser = await _unitOfWork.Repository<User>().AddAsync(user);
                 if (newUser == null) { return null; }
@@ -62,5 +65,13 @@ namespace Classroom.API.Application.Service.Users
             return StudentDTO;
 
         }
+
+
+        public List<StudentDTO> GetAllStudents()
+        {
+           var students = _studentRepository.GetAllStudentsWithUsers();
+           return _mapper.Map<List<StudentDTO>>(students);
+        }
+
     }
 }

@@ -9,5 +9,7 @@ namespace Classroom.API.Application.Service.Users
         Task<StudentDTO> CreateStudent(StudentDTO studentDTO);
         Task<StudentUpdateDTO> UpdateStudent(StudentUpdateDTO studentDTO);
 
+        List<StudentDTO> GetAllStudents();
+
     }
 }

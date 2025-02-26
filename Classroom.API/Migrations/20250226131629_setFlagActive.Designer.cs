@@ -4,6 +4,7 @@ using Classroom.API.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Classroom.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250226131629_setFlagActive")]
+    partial class setFlagActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Classroom.API.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Admins", (string)null);
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Category", b =>
@@ -77,7 +80,7 @@ namespace Classroom.API.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -108,8 +111,7 @@ namespace Classroom.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasColumnType("bit").HasDefaultValue(true);
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -125,7 +127,7 @@ namespace Classroom.API.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("classrooms", (string)null);
+                    b.ToTable("classrooms");
 
                     b.HasData(
                         new
@@ -175,8 +177,7 @@ namespace Classroom.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasColumnType("bit").HasDefaultValue(true);
 
                     b.Property<int>("userId")
                         .HasColumnType("int");
@@ -186,7 +187,7 @@ namespace Classroom.API.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("Parents", (string)null);
+                    b.ToTable("Parents");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Student", b =>
@@ -201,8 +202,7 @@ namespace Classroom.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasColumnType("bit").HasDefaultValue(true);
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -229,8 +229,7 @@ namespace Classroom.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasColumnType("bit").HasDefaultValue(true);
 
                     b.Property<string>("JobTitle")
                         .IsRequired()
@@ -247,7 +246,7 @@ namespace Classroom.API.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("Teachers", (string)null);
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.User", b =>
@@ -266,8 +265,7 @@ namespace Classroom.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                        .HasColumnType("bit").HasDefaultValue(true);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -288,7 +286,7 @@ namespace Classroom.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Admin", b =>

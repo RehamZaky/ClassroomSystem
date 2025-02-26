@@ -9,6 +9,8 @@ namespace Classroom.API.Domain.Entities
         public int userId { get; set; }
         [ForeignKey("userId")]
         public User User { get; set; }
+        public bool IsActive { get; set; } = true;
+
         public List<Student> Students { get; set; } = new List<Student>();
     }
 }

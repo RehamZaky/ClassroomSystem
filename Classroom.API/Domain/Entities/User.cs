@@ -14,6 +14,8 @@
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        public bool IsActive { get; set; } = true;
+
         //public List<UserClassroom> UserClassrooms { get; set; } = new List<UserClassroom>();
         //public List<UserQuizAttempt> QuizAttempts { get; set; } = new List<UserQuizAttempt>();
         //public List<UserRole> UserRoles { get; set; } = new List<UserRole>();

@@ -12,6 +12,7 @@ namespace Classroom.API.Domain.Entities
         public User User { get; set; }
         public int ParentId { get; set; }
         [ForeignKey("ParentId")]
+        public bool IsActive { get; set; } = true;
         public Parent? Parent { get; set; }
     }
 }

@@ -16,6 +16,13 @@ namespace Classroom.API.Controllers
         public StudentController(IStudentService studentService) {
             _studentService = studentService;
         }
+        [HttpGet("GetAllStudents")]
+        public IActionResult GetAllStudents()
+        {
+           var studentsDTO = _studentService.GetAllStudents();
+            return Ok(new ApiResponse<List<StudentDTO>>(studentsDTO,200,"Get all students successfully"));
+        }
+
         [HttpPost("CreateStudent")]
         public async Task<IActionResult> CreateStudent(StudentDTO studentDTO)   
         {
