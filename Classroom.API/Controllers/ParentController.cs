@@ -18,6 +18,14 @@ namespace Classroom.API.Controllers
         {
             _parentService = parentService;
         }
+
+        [HttpGet("GetAllParents")]
+        public IActionResult GetAllParents()
+        {
+            var parentsDTO = _parentService.GetAllParentsWithUser();
+            return Ok(new ApiResponse<List<ParentDTO>>(parentsDTO, 200, "Get all parents successfully"));
+        }
+
         [HttpPost("CreateParent")]
         public async Task<IActionResult> CreateParent(ParentDTO parentDTO)
         {
@@ -63,6 +71,20 @@ namespace Classroom.API.Controllers
                 return NotFound(new ApiResponse<ParentUpdateDTO>("User not found", 404));
             }
 
+        }
+
+        [HttpPut("DeActivateParent")]
+        public IActionResult DeActivateParent(int parentId)
+        {
+            try
+            {
+                var parentDTO = _parentService.DeActivateParent(parentId);
+                return Ok(new ApiResponse<ParentDTO>(parentDTO, 200, "Parent updated successfully"));
+            }
+            catch (KeyNotFoundException e)
+            {
+                return BadRequest(new ApiResponse<ParentDTO>("Parent not found", 404));
+            }
         }
     }
 }
