@@ -4,7 +4,8 @@ namespace Classroom.API.Application.Service.Users
 {
     public interface ITeacherService 
     {
-        Task<List<TeacherDTO>> GetAllTeachers();
+        Task<TeacherDTO> CreateTeacher(TeacherDTO teacherDTO);
+        Task<List<TeacherUserDTO>> GetAllTeachers();
 
     }
 }
