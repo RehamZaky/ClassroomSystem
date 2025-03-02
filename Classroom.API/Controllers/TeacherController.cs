@@ -41,5 +41,23 @@ namespace Classroom.API.Controllers
             return BadRequest(new ApiResponse<TeacherDTO>("", 400, errors));
 
         }
+
+        [HttpPost("UpdateTeacher")]
+        public async Task<IActionResult> UpdateTeacher(TeacherUserDTO teacherDTO)
+        {
+            var validateResult = new TeacherValidation().Validate(teacherDTO);
+            if (validateResult.IsValid)
+            {
+                var teacher = await _teacherService.UpdateTeacher(teacherDTO);
+                return Ok(new ApiResponse<TeacherUserDTO>(teacher, 200, "Teacher updated successfully"));
+            }
+            var errors = new List<string>();
+            foreach (var error in validateResult.Errors)
+            {
+                errors.Add(error.ErrorMessage);
+            }
+            return BadRequest(new ApiResponse<TeacherDTO>("", 400, errors));
+
+        }
     }
 }

@@ -18,5 +18,11 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
         {
             return await _dbContext.Users.Where(t => t.IsActive && t.UserType == UserType.Teacher).Include(t => t.teacher).ToListAsync();
         }
+
+        public async Task<User?> GetUserById(int id)
+        {
+            return await _dbContext.Users.Include(s => s.teacher).Where(s => s.IsActive && s.Id == id).FirstOrDefaultAsync();
+
+        }
     }
 }

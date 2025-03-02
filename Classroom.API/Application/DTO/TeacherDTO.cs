@@ -9,29 +9,24 @@ namespace Classroom.API.Application.DTO
         public double Salary { get; set; }
     }
 
-    //public class TeacherUpdateDTO : UserDTO
-    //{
-    //    public int Id { get; set; }
-    //    public string JobTitle { get; set; } = string.Empty;
-    //    public double Salary { get; set; }
-    //}
 
     public class TeacherUserDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string? Phone { get; set; }
-        public UserType UserType { get; set; }
-        public string JobTitle { get; set; } = string.Empty;
+        public int userId { get; set; }
+         public string JobTitle { get; set; } = string.Empty;
         public double Salary { get; set; }
+
+        public UserDTO UserDto { get; set; } = new UserDTO();
+
+        public TeacherUserDTO() { }
+
         public TeacherUserDTO(User user)
         {
-            Id = user.Id;
-            Name = user.Name;
-            Email = user.Email;
-            Phone = user.Phone;
-            UserType = user.UserType;
+            userId = user.Id;
+            UserDto.Name = user.Name;
+            UserDto.Email = user.Email;
+            UserDto.Phone = user.Phone;
+            UserDto.UserType = user.UserType;
             JobTitle = user.teacher.JobTitle;
             Salary = user.teacher.Salary;
 
