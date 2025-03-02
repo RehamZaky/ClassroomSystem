@@ -42,12 +42,11 @@ namespace Classroom.API.Application.Service.Users
 
         public async Task<StudentUpdateDTO> UpdateStudent(StudentUpdateDTO StudentDTO)
         {
-            var StudentDb = await _unitOfWork.Repository<Student>().GetByIdAsync(StudentDTO.Id);
-            if (StudentDb == null)
+            var userDb = await _studentRepository.GetUserById(StudentDTO.Id);
+            if (userDb == null)
                 throw new KeyNotFoundException();
 
-            var userDb = await _unitOfWork.Repository<User>().GetByIdAsync(StudentDb.userId);
-            if (userDb == null)
+            if (userDb.Students == null)
                 throw new KeyNotFoundException();
 
             // _mapper.Map(StudentDTO,userDb);
@@ -60,26 +59,35 @@ namespace Classroom.API.Application.Service.Users
 
 
             //_mapper.Map(StudentDTO, StudentDb);
-            StudentDb.Age = StudentDTO.Age;
-            await _unitOfWork.Repository<Student>().UpdateAsync(StudentDb);
+            userDb.Students.Age = StudentDTO.Age;
+            await _unitOfWork.Repository<Student>().UpdateAsync(userDb.Students);
             return StudentDTO;
 
         }
 
 
-        public List<StudentDTO> GetAllStudents()
+        public async Task<List<StudentUserDTO>> GetAllStudents()
         {
-           var students = _studentRepository.GetAllStudentsWithUsers();
-           return _mapper.Map<List<StudentDTO>>(students);
+             var userStudents = await _studentRepository.GetallUserStudent();
+            List<StudentUserDTO> studentUsers = new List<StudentUserDTO>();
+            foreach(var user in userStudents)
+            {
+                studentUsers.Add(new StudentUserDTO(user));
+            }
+            return studentUsers;
+                //_mapper.Map<List<StudentUserDTO>>(students);  
         }
 
-        public StudentDTO DeActivateStudent(int id)
+        public async Task<StudentDTO> DeActivateStudent(int id)
         {
-           var student = _studentRepository.DeActivateStudent(id);
+           var student = await _studentRepository.DeActivateStudent(id);
             if (student == null)
                 throw new KeyNotFoundException("Student not found");
 
-            var studentDTO = _mapper.Map<StudentDTO>(student);
+             var studentDTO = _mapper.Map<StudentDTO>(student);
+            //studentDTO.Phone = student.Phone;
+            studentDTO.Age = student.Students.Age;
+
             return studentDTO;
 
         }

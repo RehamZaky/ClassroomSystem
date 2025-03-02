@@ -5,8 +5,9 @@ namespace Classroom.API.Application.Repository.Interface
 {
     public interface IStudentRepository :IRepository<Student>
     {
-        List<Student> GetAllStudentsWithUsers();
+        Task<List<User>> GetallUserStudent();
+        Task<User?> GetUserById(int id);
 
-        Student? DeActivateStudent(int id);
+        Task<User?> DeActivateStudent(int id);
     }
 }

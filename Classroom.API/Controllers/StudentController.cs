@@ -17,10 +17,10 @@ namespace Classroom.API.Controllers
             _studentService = studentService;
         }
         [HttpGet("GetAllStudents")]
-        public IActionResult GetAllStudents()
+        public async Task<IActionResult> GetAllStudents()
         {
-           var studentsDTO = _studentService.GetAllStudents();
-            return Ok(new ApiResponse<List<StudentDTO>>(studentsDTO,200,"Get all students successfully"));
+           var studentsDTO = await _studentService.GetAllStudents();
+            return Ok(new ApiResponse<List<StudentUserDTO>>(studentsDTO,200,"Get all students successfully"));
         }
 
         [HttpPost("CreateStudent")]
@@ -67,11 +67,11 @@ namespace Classroom.API.Controllers
         }
 
         [HttpPut("DeActivateStudent")]
-        public IActionResult DeActivateStudent(int studentId)
+        public async Task<IActionResult> DeActivateStudent(int userId)
         {
             try
             {
-                var studentDTO = _studentService.DeActivateStudent(studentId);
+                var studentDTO = await _studentService.DeActivateStudent(userId);
                 return Ok(new ApiResponse<StudentDTO>(studentDTO, 200, "Student updated successfully"));
             }
             catch (KeyNotFoundException e)

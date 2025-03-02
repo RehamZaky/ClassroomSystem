@@ -22,7 +22,7 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
                 return null;
             }
             //deactivate students
-            parent.IsActive = false;
+           // parent.IsActive = false;
             _dbcontext.Parents.Update(parent);
             _dbcontext.SaveChanges();
             return parent;
@@ -31,7 +31,8 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
 
         public List<Parent> GetAllParentsWithUser()
         {
-            return _dbcontext.Parents.Where(u => u.IsActive).Include(s => s.User).ToList();
+            return new List<Parent>();
+        //  //  return _dbcontext.Parents.Where(u => u.IsActive).Include(s => s.User).ToList();
         }
     }
 }

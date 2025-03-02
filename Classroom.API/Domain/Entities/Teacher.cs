@@ -9,8 +9,6 @@ namespace Classroom.API.Domain.Entities
         [ForeignKey("userId")]
         public User User { get; set; }
         public string JobTitle { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = true;
-
         public double Salary { get; set; }
 
     }

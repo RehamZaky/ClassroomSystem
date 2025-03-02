@@ -1,4 +1,5 @@
-﻿using Classroom.API.Domain.Entities;
+﻿using AutoMapper;
+using Classroom.API.Domain.Entities;
 
 namespace Classroom.API.Application.DTO
 {

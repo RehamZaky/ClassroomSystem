@@ -2,6 +2,7 @@
 using Classroom.API.Application.Repository.Interface;
 using Classroom.API.Domain.Entities;
 using Classroom.API.Infrastructure.Context;
+using MathNet.Numerics.Statistics.Mcmc;
 using Microsoft.EntityFrameworkCore;
 using MovieSystem.Infrastructure.Presistance.Repository;
 
@@ -15,22 +16,28 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
             _dbContext = context;
         }
 
-        public List<Student> GetAllStudentsWithUsers()
+        public async Task<List<User>> GetallUserStudent()
         {
-            return _dbContext.Students.Where(u => u.IsActive).Include(s=> s.User).ToList();
+            return await _dbContext.Users.Include(s => s.Students).Where(s => s.IsActive && s.UserType == UserType.Student).ToListAsync();
         }
 
-        public Student? DeActivateStudent(int id)
+        public async Task<User?> GetUserById(int id)
         {
-           var student = _dbContext.Students.Where(s => s.Id == id).Include(s=>s.User).FirstOrDefault();
-            if(student == null)
+            return await _dbContext.Users.Include(s => s.Students).Where(s => s.IsActive && s.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<User?> DeActivateStudent(int id)
+        {
+            var userStudent = await _dbContext.Users.Where(s=> s.Id.Equals(id)).Include(s=> s.Students).FirstOrDefaultAsync();
+            await _dbContext.Students.Where(s => s.Id == id).Include(s=>s.User).FirstOrDefaultAsync();
+            if(userStudent == null)
             {
                 return null;
             }
-            student.IsActive = false;
-            _dbContext.Students.Update(student);
+            userStudent.IsActive = false;
+            _dbContext.Users.Update(userStudent);
             _dbContext.SaveChanges();
-            return student;
+            return userStudent;
         }
     }
 }

@@ -14,4 +14,25 @@ namespace Classroom.API.Application.DTO
         public int Id { get; set; }
         public int Age { get; set; }
     }
+
+    public class StudentUserDTO
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string? Phone { get; set; }
+        public UserType UserType { get; set; }
+        public int Age { get; set; }
+
+        public StudentUserDTO(User user)
+        {
+            Name = user.Name;
+            Email = user.Email;
+            Phone = user.Phone;
+            UserType = user.UserType;
+            Age = user.Students.Age;
+            
+        }
+
+    }
+
 }
