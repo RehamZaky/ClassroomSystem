@@ -20,6 +20,8 @@ namespace Classroom.API.Extentions.Configration
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IParentRepository, ParentRepository>();
             services.AddTransient<IParentService, ParentService>();
+            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
 
             var assembly = typeof(Program).Assembly;
             services.AddAutoMapper(assembly);

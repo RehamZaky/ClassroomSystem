@@ -1,0 +1,10 @@
+﻿using Classroom.API.Application.DTO;
+
+namespace Classroom.API.Application.Service.Users
+{
+    public interface ITeacherService 
+    {
+        Task<List<TeacherDTO>> GetAllTeachers();
+
+    }
+}
