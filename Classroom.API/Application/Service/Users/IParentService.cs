@@ -10,6 +10,6 @@ namespace Classroom.API.Application.Service.Users
 
         List<ParentDTO> GetAllParentsWithUser();
 
-        ParentDTO DeActivateParent(int id);
+        Task<ParentDTO> DeActivateParent(int id);
     }
 }

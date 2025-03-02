@@ -6,6 +6,6 @@ namespace Classroom.API.Application.Repository.Interface
     {
         List<Parent> GetAllParentsWithUser();
 
-        Parent? DeActivateParent(int id);
+        Task<User?> DeActivateParent(int id);
     }
 }

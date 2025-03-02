@@ -56,9 +56,9 @@ namespace Classroom.API.Application.Service.Users
             return _mapper.Map<List<ParentDTO>>(parents);
         }
 
-        public ParentDTO DeActivateParent(int id)
+        public async Task<ParentDTO> DeActivateParent(int id)
         {
-            var parent = _parentRepository.DeActivateParent(id);
+            var parent = await _parentRepository.DeActivateParent(id);
             if (parent == null)
                 throw new KeyNotFoundException("parent not found");
 

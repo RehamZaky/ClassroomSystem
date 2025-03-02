@@ -14,17 +14,17 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
             _dbcontext = context;
         }
 
-        public Parent? DeActivateParent(int id)
+        public async Task<User?> DeActivateParent(int id)
         {
-            var parent = _dbcontext.Parents.Where(s => s.Id == id).Include(s => s.User).FirstOrDefault();
+            var parent = await _dbcontext.Users.Where(s => s.Id == id).Include(s => s.parent).FirstOrDefaultAsync();
             if (parent == null)
             {
                 return null;
             }
             //deactivate students
-           // parent.IsActive = false;
-            _dbcontext.Parents.Update(parent);
-            _dbcontext.SaveChanges();
+            parent.IsActive = false;
+            _dbcontext.Users.Update(parent);
+           await _dbcontext.SaveChangesAsync();
             return parent;
 
         }

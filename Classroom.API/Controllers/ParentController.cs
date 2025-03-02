@@ -74,11 +74,11 @@ namespace Classroom.API.Controllers
         }
 
         [HttpPut("DeActivateParent")]
-        public IActionResult DeActivateParent(int parentId)
+        public async Task<IActionResult> DeActivateParent(int parentId)
         {
             try
             {
-                var parentDTO = _parentService.DeActivateParent(parentId);
+                var parentDTO = await _parentService.DeActivateParent(parentId);
                 return Ok(new ApiResponse<ParentDTO>(parentDTO, 200, "Parent updated successfully"));
             }
             catch (KeyNotFoundException e)
