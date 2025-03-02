@@ -67,5 +67,16 @@ namespace Classroom.API.Application.Service.Users
             await _unitOfWork.Repository<Teacher>().UpdateAsync(user.teacher);
             return teacherDTO;
         }
+
+        public async Task<TeacherUserDTO> DeActivateTeacher(int id)
+        {
+            var teacher = await _teacherRepository.DeActivateTeacher(id);
+            if (teacher == null)
+                throw new KeyNotFoundException("User not found");
+
+            var teacherUserDTO = _mapper.Map<TeacherUserDTO>(teacher.teacher);
+
+            return teacherUserDTO;
+        }
     }
 }

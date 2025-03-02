@@ -59,5 +59,19 @@ namespace Classroom.API.Controllers
             return BadRequest(new ApiResponse<TeacherDTO>("", 400, errors));
 
         }
+
+        [HttpPut("DeActivateTeacher")]
+        public async Task<IActionResult> DeActivateTeacher(int userId)
+        {
+            try
+            {
+                var teacherDTO = await _teacherService.DeActivateTeacher(userId);
+                return Ok(new ApiResponse<TeacherUserDTO>(teacherDTO, 200, "User updated successfully"));
+            }
+            catch (KeyNotFoundException e)
+            {
+                return BadRequest(new ApiResponse<TeacherUserDTO>("User not found", 404));
+            }
+        }
     }
 }

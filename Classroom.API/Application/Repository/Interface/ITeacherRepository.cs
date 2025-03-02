@@ -6,6 +6,7 @@ namespace Classroom.API.Application.Repository.Interface
     {
         Task<List<User>> GetAllTeachers();
         Task<User?> GetUserById(int id);
+        Task<User?> DeActivateTeacher(int id);
 
 
     }

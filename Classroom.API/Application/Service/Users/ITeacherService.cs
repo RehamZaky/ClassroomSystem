@@ -8,5 +8,7 @@ namespace Classroom.API.Application.Service.Users
         Task<TeacherUserDTO> UpdateTeacher(TeacherUserDTO teacherDTO);
         Task<List<TeacherUserDTO>> GetAllTeachers();
 
+        Task<TeacherUserDTO> DeActivateTeacher(int id);
+
     }
 }
