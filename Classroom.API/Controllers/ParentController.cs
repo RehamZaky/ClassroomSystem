@@ -20,9 +20,9 @@ namespace Classroom.API.Controllers
         }
 
         [HttpGet("GetAllParents")]
-        public IActionResult GetAllParents()
+        public async Task<IActionResult> GetAllParents()
         {
-            var parentsDTO = _parentService.GetAllParentsWithUser();
+            var parentsDTO = await _parentService.GetAllParentsWithUser();
             return Ok(new ApiResponse<List<ParentDTO>>(parentsDTO, 200, "Get all parents successfully"));
         }
 

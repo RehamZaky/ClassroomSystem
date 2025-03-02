@@ -8,7 +8,7 @@ namespace Classroom.API.Application.Service.Users
         Task<ParentDTO> CreateParent(ParentDTO parentDTO);
         Task<ParentUpdateDTO> UpdateParent(ParentUpdateDTO parentDTO);
 
-        List<ParentDTO> GetAllParentsWithUser();
+        Task<List<ParentDTO>> GetAllParentsWithUser();
 
         Task<ParentDTO> DeActivateParent(int id);
     }

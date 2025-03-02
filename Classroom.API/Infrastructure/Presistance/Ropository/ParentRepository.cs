@@ -29,10 +29,9 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
 
         }
 
-        public List<Parent> GetAllParentsWithUser()
+        public async Task<List<User>> GetAllParentsWithUser()
         {
-            return new List<Parent>();
-        //  //  return _dbcontext.Parents.Where(u => u.IsActive).Include(s => s.User).ToList();
+            return await _dbcontext.Users.Where(s=> s.IsActive && s.UserType == UserType.Parent).Include(s=> s.parent).ToListAsync();
         }
     }
 }

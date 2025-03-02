@@ -50,9 +50,9 @@ namespace Classroom.API.Application.Service.Users
 
         }
 
-        public List<ParentDTO> GetAllParentsWithUser()
+        public async Task<List<ParentDTO>> GetAllParentsWithUser()
         {
-            var parents = _parentRepository.GetAllParentsWithUser();
+            var parents = await _parentRepository.GetAllParentsWithUser();
             return _mapper.Map<List<ParentDTO>>(parents);
         }
 
