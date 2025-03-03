@@ -1,0 +1,11 @@
+﻿using Classroom.API.Domain.Entities;
+
+namespace Classroom.API.Application.Repository.Interface
+{
+    public interface IAdminRepository:IRepository<Admin>
+    {
+       Task<List<User>> GetAllAdmins();
+
+
+    }
+}
