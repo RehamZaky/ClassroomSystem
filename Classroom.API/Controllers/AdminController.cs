@@ -42,5 +42,22 @@ namespace Classroom.API.Controllers
 
         }
 
+        [HttpPost("UpdateAdmin")]
+        public async Task<IActionResult> UpdateAdmin(AdminUserDTO AdminDTO)
+        {
+            var validateResult = new AdminValidation().Validate(AdminDTO);
+            if (validateResult.IsValid)
+            {
+                var Admin = await _AdminService.UpdateAdmin(AdminDTO);
+                return Ok(new ApiResponse<AdminUserDTO>(Admin, 200, "Admin updated successfully"));
+            }
+            var errors = new List<string>();
+            foreach (var error in validateResult.Errors)
+            {
+                errors.Add(error.ErrorMessage);
+            }
+            return BadRequest(new ApiResponse<AdminDTO>("", 400, errors));
+
+        }
     }
 }

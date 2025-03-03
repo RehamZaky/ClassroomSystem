@@ -14,7 +14,7 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
             _dbContext = context;
         }
 
-        public async Task<User?> GetAdminByUserId(int id)
+        public async Task<User?> GetUserById(int id)
         {
           return  await _dbContext.Users.Where(s => s.Id == id && s.IsActive).Include(s => s.admin).FirstOrDefaultAsync();
         }
@@ -24,5 +24,6 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
             return await _dbContext.Users.Where(s =>  s.IsActive && s.UserType == UserType.Admin).Include(s => s.admin).ToListAsync();
 
         }
+
     }
 }

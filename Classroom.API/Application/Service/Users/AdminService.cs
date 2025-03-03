@@ -2,6 +2,7 @@
 using Classroom.API.Application.DTO;
 using Classroom.API.Application.Repository.Interface;
 using Classroom.API.Domain.Entities;
+using Classroom.API.Infrastructure.Presistance.Ropository;
 
 namespace Classroom.API.Application.Service.Users
 {
@@ -42,6 +43,23 @@ namespace Classroom.API.Application.Service.Users
         {
            var users = await _adminRepository.GetAllAdmins();
             return _mapper.Map<List<AdminUserDTO>>(users);
+        }
+
+        public async Task<AdminUserDTO> UpdateAdmin(AdminUserDTO AdminDTO)
+        {
+            var user = await _adminRepository.GetUserById(AdminDTO.UserId);
+            if (user == null)
+            { throw new KeyNotFoundException(); }
+
+            user.UpdatedAt = DateTime.Now;
+            await _unitOfWork.Repository<User>().UpdateAsync(user);
+
+
+            user.admin.RegisterDate = AdminDTO.RegisterDate;
+            user.admin.JobTitle = AdminDTO.JobTitle;
+
+            await _unitOfWork.Repository<Admin>().UpdateAsync(user.admin);
+            return AdminDTO;
         }
     }
 }
