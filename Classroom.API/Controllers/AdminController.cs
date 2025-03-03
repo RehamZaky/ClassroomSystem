@@ -59,5 +59,19 @@ namespace Classroom.API.Controllers
             return BadRequest(new ApiResponse<AdminDTO>("", 400, errors));
 
         }
+
+        [HttpPut("DeActivateAdmin")]
+        public async Task<IActionResult> DeActivateAdmin(int userId)
+        {
+            try
+            {
+                var AdminDTO = await _AdminService.DeActivateAdmin(userId);
+                return Ok(new ApiResponse<AdminUserDTO>(AdminDTO, 200, "User updated successfully"));
+            }
+            catch (KeyNotFoundException e)
+            {
+                return BadRequest(new ApiResponse<AdminUserDTO>("User not found", 404));
+            }
+        }
     }
 }

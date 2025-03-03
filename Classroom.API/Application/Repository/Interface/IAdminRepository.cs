@@ -7,5 +7,7 @@ namespace Classroom.API.Application.Repository.Interface
        Task<List<User>> GetAllAdmins();
 
        Task<User?> GetUserById(int id);
+
+        Task<User?> DeActivateAdmin(int id);
     }
 }

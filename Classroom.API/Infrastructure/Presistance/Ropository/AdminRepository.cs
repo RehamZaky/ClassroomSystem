@@ -25,5 +25,18 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
 
         }
 
+        public async Task<User?> DeActivateAdmin(int id)
+        {
+            var userAdmin = await _dbContext.Users.Where(s => s.Id.Equals(id)).Include(s => s.admin).FirstOrDefaultAsync();
+            if (userAdmin == null)
+            {
+                return null;
+            }
+            userAdmin.IsActive = false;
+            _dbContext.Users.Update(userAdmin);
+            _dbContext.SaveChanges();
+            return userAdmin;
+        }
+
     }
 }

@@ -10,5 +10,7 @@ namespace Classroom.API.Application.Service.Users
 
 
         Task<List<AdminUserDTO>> GetAllAdmins();
+
+        Task<AdminUserDTO> DeActivateAdmin(int id);
     }
 }
