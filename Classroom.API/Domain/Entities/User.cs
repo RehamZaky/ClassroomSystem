@@ -1,4 +1,6 @@
-﻿namespace Classroom.API.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Classroom.API.Domain.Entities
 {
     public class User
     {
@@ -16,8 +18,12 @@
 
         public bool IsActive { get; set; } = true;
 
+        public int? CourseId { get; set; }
+        [ForeignKey(nameof(CourseId))]
+        public Course? Course { get; set; }
+
         //public List<UserClassroom> UserClassrooms { get; set; } = new List<UserClassroom>();
-        //public List<UserQuizAttempt> QuizAttempts { get; set; } = new List<UserQuizAttempt>();
+        public List<UserQuizAttempt> QuizAttempts { get; set; } = new List<UserQuizAttempt>();
         //public List<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
         public Student Students { get; set; }

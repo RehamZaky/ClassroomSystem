@@ -17,7 +17,7 @@ namespace Classroom.API.Application.Validation
             RuleFor(c => c.IsActive)
                 .NotNull().WithMessage("Course status is required.");
 
-            RuleFor(c => c.CategorieId)
+            RuleFor(c => c.CategoryID)
                 .GreaterThan(0).WithMessage("Category ID must be greater than 0.");
         }
     }

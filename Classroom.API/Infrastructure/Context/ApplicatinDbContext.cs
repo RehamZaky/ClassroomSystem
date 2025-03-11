@@ -18,6 +18,8 @@ namespace Classroom.API.Infrastructure.Context
         {
 
             modelBuilder.ClassroomSeed();
+            modelBuilder.CourseSeed();
+            modelBuilder.QuizSeed();
            // modelBuilder.CategorieSeed();
             modelBuilder.ApplyConfiguration(new UsersConvig());
             modelBuilder.ApplyConfiguration(new StudentConvig());
@@ -26,14 +28,14 @@ namespace Classroom.API.Infrastructure.Context
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Domain.Entities.Classroom> classrooms{ get; set; }
+        public DbSet<Domain.Entities.Classroom> Classrooms{ get; set; }
         public DbSet<User> Users { get; set; }
         //public DbSet<Role> Roles { get; set; }
         //public DbSet<Permission> Permissions { get; set; }
         //public DbSet<RolePermission> RolePermissions { get; set; }
         //public DbSet<UserPermission> UserPermissions { get; set; }
-        //public DbSet<Course> Courses { get; set; }
-        //public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
         //public DbSet<Question> Questions { get; set; }
         //public DbSet<Answer> Answers { get; set; }
         //public DbSet<Discussion> Discussions { get; set; }

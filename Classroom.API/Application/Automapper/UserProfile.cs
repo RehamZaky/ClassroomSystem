@@ -28,6 +28,8 @@ namespace Classroom.API.Application.Automapper
             CreateMap<User, AdminDTO>().ReverseMap();
             CreateMap<Admin, AdminUserDTO>().ReverseMap();
             CreateMap<Admin, AdminDTO>().ReverseMap();
+
+            CreateMap<Course, CourseDTO>().ReverseMap();
         }
     }
 }

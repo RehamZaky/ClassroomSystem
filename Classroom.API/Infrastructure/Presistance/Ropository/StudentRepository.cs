@@ -39,5 +39,19 @@ namespace Classroom.API.Infrastructure.Presistance.Ropository
             _dbContext.SaveChanges();
             return userStudent;
         }
+
+        public async Task<User> EnrollStudentToCourse(int userId, int courseId)
+        {
+          var user =  await _dbContext.Users.Where(s => s.Id == userId).Include(s=> s.Students).Include(c=>c.Course).FirstOrDefaultAsync();
+            if(user == null)
+            {
+                return null;
+            }
+
+            user.CourseId = courseId;
+            _dbContext.Users.Update(user);
+            await _dbContext.SaveChangesAsync();
+            return user;
+        }
     }
 }

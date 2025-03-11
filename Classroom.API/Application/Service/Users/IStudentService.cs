@@ -13,5 +13,8 @@ namespace Classroom.API.Application.Service.Users
         Task<List<StudentUserDTO>> GetAllStudents();
 
         Task<StudentDTO> DeActivateStudent(int id);
+
+        Task<StudentUserDTO> EnrollStudentToCourse(int userId, int courseId);
+
     }
 }
