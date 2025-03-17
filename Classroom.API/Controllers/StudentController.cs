@@ -2,7 +2,6 @@
 using Classroom.API.Application.Service.Users;
 using Classroom.API.Application.Validation;
 using Classroom.API.Extentions.Customs.Response;
-using MathNet.Numerics.Distributions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -79,21 +78,6 @@ namespace Classroom.API.Controllers
             {
                 return BadRequest(new ApiResponse<StudentDTO>("Student not found", 404));
             }
-        }
-
-        [HttpPut("EnrollStudentToCourse")]
-        public async Task<IActionResult> EnrollStudentToCourse(int userId,int courseId)
-        {
-            try
-            {
-                var userStudent = await _studentService.EnrollStudentToCourse(userId, courseId);
-                return Ok(new ApiResponse<StudentUserDTO>(userStudent, 200, "Student updated successfully"));
-            }
-            catch(KeyNotFoundException e)
-            {
-                return BadRequest(new ApiResponse<StudentDTO>("User not found", 404));
-            }
-
         }
     }
 }

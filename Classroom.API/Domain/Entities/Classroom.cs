@@ -20,8 +20,7 @@ namespace Classroom.API.Domain.Entities
         [IgnoreDataMember]
         public int? CategoryID { get; set; }
         public Category? Category { get; set; } = new Category();
-      
-        public ICollection<Course> Course { get; set; }
+      //  public ICollection<Course> Course { get; set; }
       //  public List<Quiz> Quizzes { get; set; } = new List<Quiz>();
        // public List<Discussion> Discussions { get; set; } = new List<Discussion>();
        // public List<UserClassroom> UserClassrooms { get; set; } = new List<UserClassroom>();

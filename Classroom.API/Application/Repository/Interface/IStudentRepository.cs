@@ -9,7 +9,5 @@ namespace Classroom.API.Application.Repository.Interface
         Task<User?> GetUserById(int id);
 
         Task<User?> DeActivateStudent(int id);
-
-        Task<User> EnrollStudentToCourse(int userId,int courseId);
     }
 }

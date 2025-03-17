@@ -79,9 +79,9 @@ namespace Classroom.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 3, 5, 0, 36, 22, 629, DateTimeKind.Utc).AddTicks(11),
+                            CreatedAt = new DateTime(2025, 2, 27, 0, 9, 34, 33, DateTimeKind.Utc).AddTicks(7569),
                             Name = "cat1",
-                            UpdatedAt = new DateTime(2025, 3, 5, 0, 36, 22, 629, DateTimeKind.Utc).AddTicks(8)
+                            UpdatedAt = new DateTime(2025, 2, 27, 0, 9, 34, 33, DateTimeKind.Utc).AddTicks(7567)
                         });
                 });
 
@@ -120,119 +120,41 @@ namespace Classroom.API.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Classrooms");
+                    b.ToTable("classrooms");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CategoryID = 1,
-                            CreatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(185),
+                            CreatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7720),
                             Description = "Object-oriented programming - OOP",
                             IsActive = true,
                             Price = 99.989999999999995,
                             Title = " #C",
-                            UpdatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(252)
+                            UpdatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7780)
                         },
                         new
                         {
                             Id = 2,
                             CategoryID = 1,
-                            CreatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(258),
+                            CreatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7783),
                             Description = "SQL is a standard programming language used to manage and manipulate relational databases.",
                             IsActive = true,
                             Price = 120.5,
                             Title = "SQL",
-                            UpdatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(260)
+                            UpdatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7785)
                         },
                         new
                         {
                             Id = 3,
                             CategoryID = 1,
-                            CreatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(264),
+                            CreatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7787),
                             Description = "ASP.NET Core is an open-source framework by Microsoft for building web applications",
                             IsActive = true,
                             Price = 150.0,
                             Title = "ASP.NET Core",
-                            UpdatedAt = new DateTime(2025, 3, 5, 2, 36, 22, 629, DateTimeKind.Local).AddTicks(266)
-                        });
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.ClassroomsCourses", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ClassroomId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassroomId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("ClassroomsCourses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClassroomId = 3,
-                            CourseId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("Courses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryID = 1,
-                            CreatedAt = new DateTime(2025, 3, 5, 0, 36, 22, 629, DateTimeKind.Utc).AddTicks(309),
-                            Description = "",
-                            IsActive = true,
-                            Title = "New .Net Course",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedAt = new DateTime(2025, 2, 27, 2, 9, 34, 33, DateTimeKind.Local).AddTicks(7788)
                         });
                 });
 
@@ -256,74 +178,6 @@ namespace Classroom.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Parents");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Quiz", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ClassroomId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsOpen")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("time");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalScore")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassroomId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Quizzes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClassroomId = 3,
-                            CreatedAt = new DateTime(2025, 3, 5, 0, 36, 22, 631, DateTimeKind.Utc).AddTicks(2044),
-                            Description = "Quiz 1",
-                            EndDate = new DateTime(2025, 3, 10, 0, 36, 22, 631, DateTimeKind.Utc).AddTicks(2051),
-                            IsOpen = true,
-                            StartDate = new DateTime(2025, 3, 5, 0, 36, 22, 631, DateTimeKind.Utc).AddTicks(2049),
-                            Time = new TimeSpan(0, 0, 0, 0, 0),
-                            Title = "Identity Quiz",
-                            TotalScore = 100,
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Student", b =>
@@ -387,9 +241,6 @@ namespace Classroom.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -419,89 +270,7 @@ namespace Classroom.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.UserQuizAttempt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("AttemptDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("QuizId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserQuizAttempt");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Video", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VideoPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Video");
-                });
-
-            modelBuilder.Entity("ClassroomCourse", b =>
-                {
-                    b.Property<int>("ClassroomsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ClassroomsId", "CourseId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("ClassroomCourse");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Admin", b =>
@@ -533,36 +302,6 @@ namespace Classroom.API.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Classroom.API.Domain.Entities.ClassroomsCourses", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Classroom", "Classroom")
-                        .WithMany()
-                        .HasForeignKey("ClassroomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Classroom.API.Domain.Entities.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Classroom");
-
-                    b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Course", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("Classroom.API.Domain.Entities.Parent", b =>
                 {
                     b.HasOne("Classroom.API.Domain.Entities.User", "User")
@@ -572,21 +311,6 @@ namespace Classroom.API.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Quiz", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Classroom", "Classroom")
-                        .WithMany()
-                        .HasForeignKey("ClassroomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Classroom.API.Domain.Entities.Course", null)
-                        .WithMany("Quizzes")
-                        .HasForeignKey("CourseId");
-
-                    b.Navigation("Classroom");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Student", b =>
@@ -619,70 +343,9 @@ namespace Classroom.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Classroom.API.Domain.Entities.User", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId");
-
-                    b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.UserQuizAttempt", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Quiz", "Quiz")
-                        .WithMany("QuizAttempts")
-                        .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Classroom.API.Domain.Entities.User", "User")
-                        .WithMany("QuizAttempts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Quiz");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Video", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Course", "Course")
-                        .WithMany("Videos")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("ClassroomCourse", b =>
-                {
-                    b.HasOne("Classroom.API.Domain.Entities.Classroom", null)
-                        .WithMany()
-                        .HasForeignKey("ClassroomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Classroom.API.Domain.Entities.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Classroom.API.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Classrooms");
-                });
-
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Course", b =>
-                {
-                    b.Navigation("Quizzes");
-
-                    b.Navigation("Videos");
                 });
 
             modelBuilder.Entity("Classroom.API.Domain.Entities.Parent", b =>
@@ -690,15 +353,8 @@ namespace Classroom.API.Migrations
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("Classroom.API.Domain.Entities.Quiz", b =>
-                {
-                    b.Navigation("QuizAttempts");
-                });
-
             modelBuilder.Entity("Classroom.API.Domain.Entities.User", b =>
                 {
-                    b.Navigation("QuizAttempts");
-
                     b.Navigation("Students")
                         .IsRequired();
 

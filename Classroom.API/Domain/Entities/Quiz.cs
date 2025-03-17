@@ -12,10 +12,12 @@
         public bool IsOpen { get; set; }
         public int ClassroomId { get; set; }
         public Classroom? Classroom { get; set; }
+        public int UserId { get; set; }
+        public User? User { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-    //    public List<Question> Questions { get; set; } = new List<Question>();
-    //    public List<QuizeCertification> Certifications { get; set; } = new List<QuizeCertification>();
+        public List<Question> Questions { get; set; } = new List<Question>();
+        public List<QuizeCertification> Certifications { get; set; } = new List<QuizeCertification>();
         public List<UserQuizAttempt> QuizAttempts { get; set; } = new List<UserQuizAttempt>();
 
     }

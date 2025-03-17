@@ -92,15 +92,5 @@ namespace Classroom.API.Application.Service.Users
 
         }
 
-        public async Task<StudentUserDTO> EnrollStudentToCourse(int userId, int courseId)
-        {
-           var user = await _studentRepository.EnrollStudentToCourse(userId, courseId);
-            if (user == null) throw new KeyNotFoundException();
-
-            var studentUserDto = _mapper.Map<StudentUserDTO>(user);
-           studentUserDto.Course = _mapper.Map<CourseDTO>(user.Course);
-
-            return studentUserDto;
-        }
     }
 }

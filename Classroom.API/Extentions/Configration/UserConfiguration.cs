@@ -10,12 +10,6 @@ namespace Classroom.API.Infrastructure.Configuration
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.UserType).IsRequired();
-
-
-            builder.HasMany(x=> x.QuizAttempts)
-                .WithOne(s=> s.User)
-                .HasForeignKey(x=> x.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 

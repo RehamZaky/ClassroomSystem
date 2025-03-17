@@ -20,10 +20,6 @@ namespace Classroom.API.Application.DTO
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string? Phone { get; set; }
-
-        public int? CourseId { get; set; } // ? null
-        public CourseDTO? Course { get; set; }
-
         public UserType UserType { get; set; }
         public int Age { get; set; }
 
